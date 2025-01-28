@@ -25,7 +25,7 @@ class CustomUser(AbstractUser):
         ('admin', 'Admin'),
         ('trainer', 'Trainer'),
     )
-    
+    username = None
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='trainer')
     #organization = models.CharField(max_length=255, blank=True, null=True)
@@ -38,11 +38,3 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
-# Trainer Model
-class Trainer(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='trainer_profile')
-    name = models.CharField(max_length=255)
-    expertise = models.CharField(max_length=255)
-    contact_info = models.CharField(max_length=255)
-    def __str__(self):
-        return f"{self.trainer.email} - {self.amount}"
