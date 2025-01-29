@@ -1,3 +1,5 @@
+from trainers.models import Trainer
+from trainers.repositories import TrainerRepository
 from .repositories import CourseRepository
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -38,3 +40,10 @@ class CourseService:
             raise ValueError(f"Course with ID {course_id} not found")
         
         self.course_repo.delete_course(course)
+    
+    #link trainers to courses
+    @staticmethod
+    def link_trainers_to_course(course, trainer_ids):
+        trainers = Trainer.objects.filter(id__in=trainer_ids)
+        course.trainers.add(*trainers)  # Bulk assign trainers
+        return course

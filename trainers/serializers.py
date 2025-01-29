@@ -6,4 +6,10 @@ class TrainerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trainer
         fields = '__all__' 
-        read_only_fields = ['user'] 
+        read_only_fields = ['user']
+         
+#link trainers to courses
+class LinkTrainerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Trainer
+        fields =['id','full_name']

@@ -9,8 +9,9 @@ class CourseRepository:
     def get_all_courses(self):
         return Course.objects.all()
 
-    def get_course_by_id(self, course_id):
-        return Course.objects.get(id=course_id)
+    @staticmethod
+    def get_course_by_id(course_id):
+        return Course.objects.filter(id=course_id).first()
 
     def create_course(self, title, description, date):
         # Create a new course

@@ -1,9 +1,11 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import CourseSerializer
+from courses.repositories import CourseRepository
+from .serializers import CourseSerializer, CourseTrainerSerializer
 from .services import CourseService
 from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
+from rest_framework.exceptions import NotFound, PermissionDenied
 
 class CourseListView(APIView):
     """
@@ -82,3 +84,22 @@ class CourseUpdateDeleteView(APIView):
         except ValueError as e:
             return Response({"error": str(e)}, status=status.HTTP_404_NOT_FOUND)
 
+class LinkTrainerToCourseView(APIView):
+    """
+    View to link multiple trainers to a course.
+    """
+    permission_classes = [IsAdminUser]
+
+    def post(self, request, *args, **kwargs):
+        course_id = request.data.get('course_id')
+        trainer_ids = request.data.get('trainer_ids', [])
+
+        # Fetch the course
+        course = CourseRepository.get_course_by_id(course_id)
+        if not course:
+            raise NotFound("Course not found.")
+
+        # Link multiple trainers
+        updated_course = CourseService.link_trainers_to_course(course, trainer_ids)
+
+        return Response(CourseTrainerSerializer(updated_course).data)

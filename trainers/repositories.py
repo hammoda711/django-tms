@@ -28,3 +28,9 @@ class TrainerRepository:
     @staticmethod
     def delete_trainer(trainer):
         trainer.delete()
+        
+    #get trainers to be linked to a course
+    @staticmethod
+    def get_trainers_by_ids(trainer_ids):
+        """ Retrieve trainers by their IDs. """
+        return Trainer.objects.filter(id__in=trainer_ids)
