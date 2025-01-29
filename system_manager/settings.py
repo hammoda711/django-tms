@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
 import environ
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'accounts',
     'courses',
     'payments',
+    'trainers',
 ]
 
 MIDDLEWARE = [
@@ -112,10 +114,12 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Default permission for authenticated users
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-
+    ],
 }
 
 SIMPLE_JWT = {
@@ -123,6 +127,11 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
 
+# The directory where media files will be stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# The URL to access media files
+MEDIA_URL = '/media/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
