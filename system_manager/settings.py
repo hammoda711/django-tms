@@ -49,9 +49,11 @@ INSTALLED_APPS = [
     'courses',
     'payments',
     'trainers',
+    'corsheaders', 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,6 +83,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'system_manager.wsgi.application'
 
+#CORS_ALLOWED_ORIGINS = ["*"]
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_ALL_ORIGINS = env.bool("CORS_ALLOW_ALL_ORIGINS", default=False)
+CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS")
+CORS_ALLOW_CREDENTIALS = env.bool("CORS_ALLOW_CREDENTIALS", default=True)
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -121,7 +130,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),#minutes=30
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
 

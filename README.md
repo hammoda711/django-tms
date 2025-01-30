@@ -44,6 +44,8 @@ The project uses **Simple JWT** for authentication, ensuring secure token-based 
 
 - **Authentication**: Simple JWT (JSON Web Token)
 
+- **Frontend**: HTML, CSS, JS
+
 ---------------
 
 ## **2. Installation and Setup**
@@ -70,6 +72,9 @@ The project uses **Simple JWT** for authentication, ensuring secure token-based 
   SECRET_KEY=""
   DEBUG=
   ALLOWED_HOSTS=localhost,127.0.0.1
+  CORS_ALLOW_ALL_ORIGINS=
+  CORS_ALLOWED_ORIGINS=
+  CORS_ALLOW_CREDENTIALS=
   ```
 
 - Run migrations `py manage.py migrate`
@@ -124,3 +129,14 @@ python manage.py test courses    #replace with the app you want to test
 You can find the detailed guide for all test cases in our project in [Test Guide.md](documentation/TESTS.md).
 
 -------
+
+## 7.**Frontend**
+
+Frontend is implemented using HTML, CSS, JavaScript.
+You can see a short test video as an example for Courses CRUD and other featurs from [here](documentation/test-video/CTMS.mp4)
+
+-------
+
+## Notes:
+
+- You need to configure Django to handle CORS (Cross-Origin Resource Sharing) and other configs properly in `settings.py`(add it to INSTALLED_APPS, Middlewares,..)

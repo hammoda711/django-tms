@@ -1,0 +1,36 @@
+
+form {
+  max-width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+form label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+form button {
+  margin-top: 15px;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+form button:hover {
+  background: #218838;
+}
+form .message {
+  margin-top: 15px;
+  font-weight: bold;
+}
