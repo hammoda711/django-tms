@@ -36,7 +36,7 @@ class CourseViewsTestCase(APITestCase):
     @patch('courses.services.CourseService.get_all_courses')
     def test_list_courses(self, mock_get_all_courses):
         """
-        Test retrieving all courses (public access).
+        Test retrieving all courses .
         """
         mock_get_all_courses.return_value = [self.course]  # Mock service return value
 
@@ -48,7 +48,7 @@ class CourseViewsTestCase(APITestCase):
     @patch('courses.services.CourseService.get_course_by_id')
     def test_get_course_detail(self, mock_get_course_by_id):
         """
-        Test retrieving a specific course (public access).
+        Test retrieving a specific course.
         """
         mock_get_course_by_id.return_value = self.course
 

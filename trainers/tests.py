@@ -15,7 +15,7 @@ class TrainerViewTests(APITestCase):
         )
         self.admin_token = str(AccessToken.for_user(self.admin_user))
 
-        # Create regular user
+        # Create trainer user
         self.user = User.objects.create_user(email="user@example.com", password="userpass")
         self.user_token = str(AccessToken.for_user(self.user))
 
