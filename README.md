@@ -64,7 +64,7 @@ The project uses **Simple JWT** for authentication, ensuring secure token-based 
 
 - Configure environment variables: 
   
-  `.env.example`
+  `.env.example`:
   
   ```.env
   SECRET_KEY=""
@@ -72,7 +72,7 @@ The project uses **Simple JWT** for authentication, ensuring secure token-based 
   ALLOWED_HOSTS=localhost,127.0.0.1
   ```
 
-- Run migrations `py manage.py migrarte`
+- Run migrations `py manage.py migrate`
 
 - start the server `py manage.py runserver`
 
@@ -116,7 +116,7 @@ The test cases in this project are built using **Django REST Framework's Test Fr
 To run the test suite, use the following commands:
 
 ```bash
-python manage.py test courses #replace with the app you want to test
+python manage.py test courses    #replace with the app you want to test
 ```
 
 ### Test Guide

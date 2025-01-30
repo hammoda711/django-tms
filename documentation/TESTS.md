@@ -51,7 +51,7 @@ These tests ensure that non-admin users cannot perform restricted actions on cou
 
 ---
 
-## Trainers Test Cases
+## **Trainers API Test Cases**
 
 ### **Authentication Setup**
 
