@@ -6,7 +6,7 @@ class Course(models.Model):
     description = models.TextField()
     date = models.DateTimeField()
     trainers = models.ManyToManyField(Trainer, related_name='courses', limit_choices_to={'role': 'trainer'})
-
+    
     def __str__(self):
         return self.title
 

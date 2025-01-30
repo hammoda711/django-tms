@@ -2,16 +2,17 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from courses.repositories import CourseRepository
+from trainers.permissions import IsOwnerOrAdmin
 from .serializers import CourseSerializer, CourseTrainerSerializer
 from .services import CourseService
-from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
+from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework.exceptions import NotFound, PermissionDenied
 
 class CourseListView(APIView):
     """
     View to list courses.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         service = CourseService()
@@ -24,7 +25,7 @@ class CourseDetailView(APIView):
     """
     View to retrieve, a specific course.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsOwnerOrAdmin]
 
     def get(self, request, course_id):
         service = CourseService()

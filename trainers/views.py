@@ -6,7 +6,7 @@ from .models import Trainer
 from .serializers import TrainerSerializer
 from .services import TrainerService
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
+from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework.exceptions import NotFound,PermissionDenied
 
 class TrainerCreateView(APIView):
